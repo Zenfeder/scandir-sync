@@ -1,0 +1,29 @@
+{
+  "name": "scandir-sync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && node scan.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zenfeder/scandir-sync.git"
+  },
+  "keywords": [
+    "scan",
+    "scandir",
+    "scandir-sync",
+    "scanpath",
+    "scanpath-sync"
+  ],
+  "author": "Zenfeder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zenfeder/scandir-sync/issues"
+  },
+  "homepage": "https://github.com/Zenfeder/scandir-sync#readme",
+  "devDependencies": {
+    "colors": "^1.1.2"
+  }
+}
