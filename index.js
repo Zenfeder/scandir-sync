@@ -8,7 +8,7 @@ function Scan() {
 
 Scan.prototype.readpathSync = function(path) {
   const files = fs.readdirSync(path)
-  console.log(`> Scanning directory: ${path}`)
+  console.log(`...Scanning directory: ${path}`)
 
   files.forEach((file) => {
     this.handlepathSync(path + '/' + file)
@@ -29,16 +29,16 @@ Scan.prototype.handlepathSync = function(path) {
 }
 
 module.exports = function(dir) {
-  console.time('Time'.green)
+  console.time('>  Time'.green)
 
   const scannor = new Scan()
   scannor.readpathSync(dir)
   scannor.dirQueue.push(dir)
 
-  console.timeEnd('Time'.green)
-  console.log('> Successful!'.green)
+  console.timeEnd('>  Time'.green)
+  console.log('>  Successful!'.green)
 
-  console.log(`Total ${scannor.dirQueue.length} directorys and ${scannor.fileQueue.length} files`.green)
+  console.log(`>  Total ${scannor.dirQueue.length} directorys and ${scannor.fileQueue.length} files`.green)
 
   return {
     filesPath: scannor.fileQueue.slice(0),

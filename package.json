@@ -1,7 +1,7 @@
 {
   "name": "scandir-sync",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Scan a directory synchronously",
   "main": "index.js",
   "scripts": {
     "test": "cd test && node scan.js"
