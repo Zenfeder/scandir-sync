@@ -8,7 +8,11 @@ npm install scandir-sync
     const scan = require('scandir-sync')
     const basePath = "./dist"
 
-    const result = scan(basePath)
+    const result = scan({ 
+        rootDir: basePath,
+        ignoreFile: /\.txt$/, 
+        ignoreDir:  /css$/
+    })
     
     // get a array of all the scanned directorys path
     console.log(result.dirsPath)
