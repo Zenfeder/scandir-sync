@@ -2,16 +2,20 @@ const fs = require('fs')
 const colors = require('colors')
 const log = require('single-line-log').stdout
 
-function Scan({ ignoreFile, ignoreDir }) {
-  this.ignoreFile = ignoreFile || null
-  this.ignoreDir = ignoreDir || null
+function Scan({ ignoreFile, ignoreDir, log }) {
   this.fileQueue = []
   this.dirQueue = []
+
+  this.ignoreFile = ignoreFile || null
+  this.ignoreDir = ignoreDir || null
+  this.log = typeof log === 'boolean'?log:true
 }
 
 Scan.prototype.readpathSync = function(path) {
   const files = fs.readdirSync(path)
-  log(`Scanning directory: ${path}\n`)
+  if (this.log) {
+    log(`> Scanning directory: ${path}\n`.grey)
+  }
 
   files.forEach((file) => {
     this.handlepathSync(path + '/' + file, file)
@@ -35,17 +39,18 @@ Scan.prototype.handlepathSync = function(path, file) {
   }
 }
 
-module.exports = function({ rootDir, ignoreFile, ignoreDir }) {
-  console.time('>  Time'.green)
-
-  const scannor = new Scan({ ignoreFile, ignoreDir })
+module.exports = function({ rootDir, ignoreFile, ignoreDir, log }) {
+  console.time(`> Scan directory ${rootDir} successful`.green)
+  
+  const scannor = new Scan({ ignoreFile, ignoreDir, log })
   scannor.readpathSync(rootDir)
   scannor.dirQueue.push(rootDir)
 
-  console.timeEnd('>  Time'.green)
-  console.log('>  Successful!'.green)
+  console.timeEnd(`> Scan directory ${rootDir} successful`.green)
 
-  console.log(`>  Total ${scannor.dirQueue.length} directorys and ${scannor.fileQueue.length} files`.green)
+  if (scannor.log) {
+    console.log(`> Total ${scannor.dirQueue.length} directorys and ${scannor.fileQueue.length} files`.green)
+  }
 
   return {
     filesPath: scannor.fileQueue.slice(0),
