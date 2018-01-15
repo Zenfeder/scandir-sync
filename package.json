@@ -1,6 +1,6 @@
 {
   "name": "scandir-sync",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Scan a directory synchronously",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Zenfeder/scandir-sync#readme",
   "devDependencies": {
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "single-line-log": "^1.1.2"
   }
 }

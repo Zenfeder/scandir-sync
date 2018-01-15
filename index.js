@@ -1,5 +1,6 @@
 const fs = require('fs')
 const colors = require('colors')
+const log = require('single-line-log').stdout
 
 function Scan({ ignoreFile, ignoreDir }) {
   this.ignoreFile = ignoreFile || null
@@ -10,7 +11,7 @@ function Scan({ ignoreFile, ignoreDir }) {
 
 Scan.prototype.readpathSync = function(path) {
   const files = fs.readdirSync(path)
-  console.log(`...Scanning directory: ${path}`)
+  log(`Scanning directory: ${path}\n`)
 
   files.forEach((file) => {
     this.handlepathSync(path + '/' + file, file)
