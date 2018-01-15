@@ -6,7 +6,7 @@ const result = scan({
     rootDir: basePath, 
     ignoreFile: /\.txt$/, 
     ignoreDir:  /css$/,
-    log: false
+    log: true
 })
 
 console.log(result.dirsPath)

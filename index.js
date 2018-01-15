@@ -46,9 +46,8 @@ module.exports = function({ rootDir, ignoreFile, ignoreDir, log }) {
   scannor.readpathSync(rootDir)
   scannor.dirQueue.push(rootDir)
 
-  console.timeEnd(`> Scan directory ${rootDir} successful`.green)
-
   if (scannor.log) {
+    console.timeEnd(`> Scan directory ${rootDir} successful`.green)
     console.log(`> Total ${scannor.dirQueue.length} directorys and ${scannor.fileQueue.length} files`.green)
   }
 
